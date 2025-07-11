@@ -5,31 +5,35 @@ const cors = require('cors');
 
 const app = express();
 
-// Middleware
+// ✅ CORS Configuration
 app.use(cors({
-  origin: 'https://rath-wale-frontend-v52g-i42gsi010-chetan-mankers-projects.vercel.app', // Your frontend URL
+  origin: 'https://rath-wale-frontend-v52g-i42gsi010-chetan-mankers-projects.vercel.app', // ✅ Exact deployed frontend URL
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   exposedHeaders: ['Content-Disposition']
 }));
+
+// ✅ Middleware
 app.use(express.json());
 
-// MongoDB connection
+// ✅ MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.error('MongoDB connection error:', err));
 
-.then(() => console.log('MongoDB connected'))
-.catch((err) => console.error('MongoDB connection error:', err));
-
-// Routes
+// ✅ Routes
 const authRoutes = require('./routes/auth');
 const entryRoutes = require('./routes/entries');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/entries', entryRoutes);
 
-// Default route
+// ✅ Default Route
 app.get('/', (req, res) => {
   res.send('Bookkeeping API running');
 });
 
-// Server start
+// ✅ Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
