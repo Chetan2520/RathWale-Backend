@@ -7,7 +7,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'https://rath-wale-frontend-v52g-i42gsi010-chetan-mankers-projects.vercel.app/login', // Your frontend URL
+  origin: 'https://rath-wale-frontend-v52g-i42gsi010-chetan-mankers-projects.vercel.app', // Your frontend URL
   exposedHeaders: ['Content-Disposition']
 }));
 app.use(express.json());
