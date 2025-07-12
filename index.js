@@ -7,7 +7,9 @@ const app = express();
 
 // ✅ CORS Configuration
 app.use(cors({
-  origin: 'https://rath-wale-frontend-v52g-i42gsi010-chetan-mankers-projects.vercel.app', // ✅ Exact deployed frontend URL
+  origin: [
+    'https://rath-wale-indore.vercel.app/api/'
+  ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
