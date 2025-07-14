@@ -8,7 +8,7 @@ const app = express();
 // ✅ CORS Configuration
 app.use(cors({
   origin: [
-    'https://rath-wale-indore.vercel.app/api/'
+    'https://rath-wale-indore.vercel.app'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
